@@ -9,7 +9,7 @@ public class PlaceService {
         this.placeRepository = placeRepository;
     }
 
-    public Mono<Place> created(Place place) {
+    public Mono<Place> create(Place place) {
         return placeRepository.save(place);
     }
 }

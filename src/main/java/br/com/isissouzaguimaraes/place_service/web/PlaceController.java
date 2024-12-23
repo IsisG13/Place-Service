@@ -22,7 +22,7 @@ public class PlaceController {
 
     @PostMapping
     public ResponseEntity<Mono<Place>> create(@RequestBody Place place) {
-        var createdPlace = placeService.created(place);
+        var createdPlace = placeService.create(place);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPlace);
     }
 }
