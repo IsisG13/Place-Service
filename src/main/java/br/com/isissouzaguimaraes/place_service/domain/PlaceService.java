@@ -3,6 +3,7 @@ package br.com.isissouzaguimaraes.place_service.domain;
 import com.github.slugify.Slugify;
 
 import br.com.isissouzaguimaraes.place_service.api.PlaceRequest;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class PlaceService {
@@ -20,4 +21,9 @@ public class PlaceService {
                 null);
         return placeRepository.save(place);
     }
+
+    public Flux<Place> findAll() {
+        return placeRepository.findAll(); // Supondo que o repositório seja reativo
+    }
+
 }
