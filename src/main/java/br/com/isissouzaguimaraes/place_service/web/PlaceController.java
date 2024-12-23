@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.isissouzaguimaraes.place_service.api.PlaceRequest;
 import br.com.isissouzaguimaraes.place_service.api.PlaceResponse;
 import br.com.isissouzaguimaraes.place_service.domain.PlaceService;
+import jakarta.validation.Valid;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -22,7 +23,7 @@ public class PlaceController {
     }
 
     @PostMapping
-    public ResponseEntity<Mono<PlaceResponse>> create(@RequestBody PlaceRequest request) {
+    public ResponseEntity<Mono<PlaceResponse>> create(@Valid @RequestBody PlaceRequest request) {
         var PlaceResponse = placeService.create(request).map(PlaceMapper::fromPlaceToResponse);
         return ResponseEntity.status(HttpStatus.CREATED).body(PlaceResponse);
     }
